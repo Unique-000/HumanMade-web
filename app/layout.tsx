@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Grainient from "@/components/Grainient";
+import DynamicBackground from "@/components/DynamicBackground"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,33 +29,9 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="h-dvh w-dvw">
-        <div className="w-dvw h-dvh absolute -z-50">
-          <Grainient
-            color1="#00c230"
-            color2="#fbff29"
-            color3="#22d38f"
-            timeSpeed={0.25}
-            colorBalance={0}
-            warpStrength={1}
-            warpFrequency={5}
-            warpSpeed={2}
-            warpAmplitude={50}
-            blendAngle={0}
-            blendSoftness={0.05}
-            rotationAmount={500}
-            noiseScale={2}
-            grainAmount={0.1}
-            grainScale={2}
-            grainAnimated={false}
-            contrast={1.5}
-            gamma={1}
-            saturation={1}
-            centerX={0}
-            centerY={0}
-            zoom={0.9}
-          />
-        </div>
-        <main className="h-dvh w-dvw flex absolute z-0 px-10 justify-center">
+        <DynamicBackground />
+
+        <main className="h-dvh w-dvw flex absolute z-0 px-10 items-center justify-center">
           {children}
         </main>
         </body>
