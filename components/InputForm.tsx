@@ -17,12 +17,16 @@ const API_URL = "http://localhost:5000"
 export default function InputForm(){
     const router = useRouter();
     const [code, setCode] = useState("")
+    const [loading, setLoading] = useState(false)
 
     function CheckCode(value: string){
         if (value.length == 6){
+            setLoading(true)
             axios.get(API_URL+"/api/images/"+value)
             .then(function (response){
+                localStorage.setItem("similar", "false")
                 router.push('/photo/'+value);
+                setLoading(false)
             })
             .catch(function (error) {
                 alert(error)
@@ -30,6 +34,35 @@ export default function InputForm(){
         }
     }
     
+    const handleFileChange = async (file: File | null) => {
+        if (!file) return
+
+        const formData = new FormData()
+        formData.append("file", file)
+
+        try {
+            console.log("a")
+            setLoading(true)
+            await axios.post(API_URL + "/api/images/check", formData)
+            .then((res) => {
+                if (res.data.mess != undefined){
+                    alert("No matches")
+                }
+                if(res.data.exactMatch == true){
+                    localStorage.setItem("similar", "false")
+                    router.push('/photo/'+res.data.matches[0].code);
+                }
+                if (res.data.similarMatch == true){
+                    localStorage.setItem("similar", "true")
+                    router.push('/photo/'+res.data.matches[0].code);
+                }
+                setLoading(false)
+            })
+        } catch (err) {
+            alert(err)
+        }
+    }
+
     return(
         <div className="w-[400px] bg-background/50 backdrop-blur-[250px] p-7 rounded-[30] squircle text-[#709200] font-sans font-bold text-sm flex flex-col items-center">
             <InputOTP maxLength={6} pattern={REGEXP_ONLY_DIGITS_AND_CHARS} value={code} onChange={(value) => {
@@ -45,7 +78,8 @@ export default function InputForm(){
             </InputOTPGroup>
             </InputOTP>
 
-            <FileInput/>
+            <FileInput onChange={handleFileChange}/>
+            {loading && <p className="text-sm text-muted-foreground mt-3">Loading...</p>}
         </div>
     )
 }
