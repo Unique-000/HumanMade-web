@@ -30,9 +30,12 @@ export default function Page(){
                 <div className="pl-10 mt-8">
                     <p className="text-[#4C5C18] text-4xl font-bold mb-1">Log in</p>
                 </div>
-                <input type="text" id="acc" className="text-[#709200] text-4xl font-semibold ml-15 w-100" placeholder="Account number"></input>
-                <div onClick={LoginHandle} className="flex justify-center bg-[#C6FF0E] h-16 w-100 rounded-[10] ml-auto mr-auto cursor-pointer">
+                <input type="text" id="acc" className="text-[#709200] text-4xl font-semibold ml-15 w-100 mb-5 mt-5" placeholder="Account number"></input>
+                <div onClick={LoginHandle} className="flex justify-center bg-[#C6FF0E] h-15 w-100 rounded-[10] ml-auto mr-auto cursor-pointer">
                     <p className="text-[#709200] text-3xl font-semibold mt-auto mb-auto">Log In</p>
+                </div>
+                <div className='bg-[#9CDB5C]/25 h-1 w-80 ml-auto mr-auto'>
+
                 </div>
                 <div onClick={() => router.push('/register')} className="flex justify-center bg-[#C6FF0E]/25 border-5 border-[#C6FF0E] h-16 w-100 rounded-[10] mb-8 ml-auto mr-auto cursor-pointer">
                     <p className="text-[#709200] text-3xl font-semibold mt-auto mb-auto">Create new account</p>

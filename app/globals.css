@@ -132,3 +132,31 @@
 .squircle{
   corner-shape: squircle;
 }
+
+.custom-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 6px;
+  background: #C4FE57;
+  border: 3px solid #95D027;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: box-shadow 0.15s;
+}
+.custom-checkbox:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(149, 208, 39, 0.35);
+}
+.custom-checkbox:checked::after {
+  content: '';
+  display: block;
+  width: 0.5rem;
+  height: 0.9rem;
+  border: 3px solid #95D027;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg) translate(-1px, -1px);
+}
