@@ -1,10 +1,12 @@
 "use client"
 import axios from "axios"
 import "../app/globals.css"
-
+import { useRouter } from 'next/navigation'
 const API_URL = "http://localhost:5000"
 
 export default function AccountCreation(){
+    const router = useRouter();
+
     function LoginAttempt(){
         if (!(document.getElementById("check") as HTMLInputElement).checked || (document.getElementById("acc") as HTMLInputElement).value.length != 16){
             alert("Check the checkbox and/or enter correct account number")
@@ -14,8 +16,8 @@ export default function AccountCreation(){
             login: (document.getElementById("acc") as HTMLInputElement).value
         })
         .then((res) =>{
-            console.log(res.data)
-            alert("Account created")
+            localStorage.setItem("acc_num", (document.getElementById("acc") as HTMLInputElement).value)
+            router.push('/dashboard')
         })
         .catch((err) => {
             alert(err)
