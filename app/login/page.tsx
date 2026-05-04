@@ -17,7 +17,8 @@ export default function Page(){
             login: (document.getElementById("acc") as HTMLInputElement).value
         })
         .then(()=>{
-            alert("logged in")
+            localStorage.setItem("acc_num", (document.getElementById("acc") as HTMLInputElement).value)
+            router.push('/dashboard')
         })
         .catch((err) =>{
             alert(err)
