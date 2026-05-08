@@ -5,6 +5,7 @@ import axios from "axios"
 import Image from "next/image";
 import { apiUrl } from "@/lib/config";
 import Link from 'next/link';
+import { GetBackButton } from '@/components/GetBackButton';
 
 interface PhotoData {
     url: string;
@@ -113,13 +114,7 @@ export default function Page(){
 
     return(
         <div className='h-dvh w-full flex justify-center items-center flex-col'>
-            <nav className='h-25 w-full px-10 flex items-center justify-start absolute top-0'>
-                <Link href={"/"} className='flex flex-row items-center text-white space-x-2.5'>
-                    <div className='h-5 w-5 bg-black'></div> 
-                    <p>Get Back</p>
-                </Link>
-                
-            </nav>
+            <GetBackButton/>
             <div className="w-dvw h-dvh absolute overflow-hidden inset-0 -z-50">
               <Image
                 src={photoData.url}

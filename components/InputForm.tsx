@@ -61,7 +61,7 @@ export default function InputForm(){
     }
 
     return(
-        <div className="w-[400px] bg-background/50 backdrop-blur-[250px] p-7 space-y-7 rounded-[30] squircle text-[#709200] font-sans font-bold text-sm flex flex-col items-center">
+        <div className="w-fit sm:w-[400px] bg-background/50 backdrop-blur-[250px] p-7 space-y-7 rounded-[30] squircle text-[#709200] font-sans font-bold text-sm flex flex-col items-center">
         <div className="flex flex-col space-y-2">
             <p className="font-bold">Code</p>
             <InputOTP maxLength={6} pattern={REGEXP_ONLY_DIGITS_AND_CHARS} value={code} onChange={(value) => {

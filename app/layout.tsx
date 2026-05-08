@@ -41,11 +41,11 @@ export default function RootLayout({
               centerX={0}
               centerY={0}
               zoom={0.9}
-              className="blur-3xl opacity-60"
+              className="blur-3xl opacity-60 "
             />
           </div>
 
-        <main className="h-full w-full flex absolute z-0 px-10 items-center justify-center">
+        <main className="h-dvh w-dvw flex absolute z-0 items-center justify-center overflow-scroll">
           {children}
         </main>
       </body>

@@ -6,6 +6,7 @@ import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp
 import { REGEXP_ONLY_DIGITS, REGEXP_ONLY_DIGITS_AND_CHARS } from 'input-otp';
 import { useState } from 'react';
 import Link from 'next/link';
+import { GetBackButton } from '@/components/GetBackButton';
 
 export default function Page(){
     const [accNumber, setAccNumber] = useState(String);
@@ -34,12 +35,7 @@ export default function Page(){
 
     return(
         <>
-        <nav className='h-25 w-full px-10 flex items-center justify-start absolute top-0'>
-            <Link href={"/"} className='flex flex-row items-center text-black space-x-2.5'>
-                <div className='h-5 w-5 bg-black'></div> 
-                <p>Get Back</p>
-            </Link>
-        </nav>
+        <GetBackButton/>
         <div className="flex flex-row items-center justify-center h-full w-full max-w-[1500px]">
             <div className="flex flex-col justify-around items-center bg-[#AFFF5D] w-fit h-fit p-4 pt-5 sm:p-10 rounded-[30] space-y-8">
                 <div className="w-full justify-start flex">

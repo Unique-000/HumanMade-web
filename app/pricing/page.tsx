@@ -1,4 +1,5 @@
 "use client"
+import { GetBackButton } from '@/components/GetBackButton'
 import Link from 'next/link'
 
 const OfferContainer = ({name, price, first_perk, second_perk, third_perk})=>{
@@ -23,14 +24,9 @@ const OfferContainer = ({name, price, first_perk, second_perk, third_perk})=>{
 export default function Page(){
     return(
         <>
-            <nav className='h-25 w-full px-10 flex items-center justify-start absolute top-0'>
-                <Link href={"/"} className='flex flex-row items-center text-white space-x-2.5 cursor-pointer'>
-                    <div className='h-5 w-5 bg-black'></div> 
-                    <p>Get Back</p>
-                </Link>
-            </nav>
+            <GetBackButton/>
             <div className='flex flex-col'>
-                <div className="flex flex-row items-center justify-center h-full w-full max-w-[1500px] gap-10">
+                <div className="flex flex-col sm:flex-row items-center justify-center h-full w-full max-w-[1500px] gap-10">
                     <OfferContainer name={"Free"} price={"$0/month"} first_perk={"Mobile app"} second_perk={"Rate limit 5 calls/day"} third_perk={"Social Media image generator"}/>
                     <OfferContainer name={"Growth"} price={"$5/month"} first_perk={"Upload API access"} second_perk={"Password protected photos"} third_perk={"Everything in free"}/>
                     <OfferContainer name={"Enterprise"} price={"Custom"} first_perk={"Unlimited* API calls"} second_perk={"Custom volume"} third_perk={"Everything in Grow"}/>
