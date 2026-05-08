@@ -5,8 +5,7 @@ import { useParams, usePathname } from "next/navigation"
 import axios from "axios"
 import Image from "next/image"
 import Grainient from "@/components/Grainient";
-
-const API_URL = "http://localhost:5000"
+import { apiUrl } from "@/lib/config"
 
 export default function DynamicBackground() {
   const params = useParams<{ tag: string }>()
@@ -14,12 +13,10 @@ export default function DynamicBackground() {
   const [url, setUrl] = useState<string | null>(null)
 
   useEffect(() => {
-    setUrl(null)
-
     if (!params?.tag) return
 
     axios
-      .get(API_URL + "/api/images/" + params.tag)
+      .get(apiUrl(`/api/images/${encodeURIComponent(params.tag)}`))
       .then((res) => {
         setUrl(res.data.url)
       })

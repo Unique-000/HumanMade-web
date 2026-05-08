@@ -78,7 +78,7 @@ export function FileInput({ id, className, name, maxSize, onChange, onError }: F
         onDrop={handleDrop}
         onClick={() => !isImageUploaded && inputRef.current?.click()}
         className={cn(
-          "relative rounded-lg transition-all p-8 bg-foreground h-50",
+          "relative rounded-lg transition-all p-8 bg-foreground h-50 flex items-center justify-center",
           isImageUploaded
             ? "opacity-50 cursor-not-allowed"
             : "cursor-pointer hover:border-primary/50 hover:bg-foreground/60",

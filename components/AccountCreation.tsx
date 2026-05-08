@@ -2,7 +2,7 @@
 import axios from "axios"
 import "../app/globals.css"
 import { useRouter } from 'next/navigation'
-const API_URL = "http://localhost:5000"
+import { apiUrl } from "@/lib/config"
 
 export default function AccountCreation(){
     const router = useRouter();
@@ -12,10 +12,10 @@ export default function AccountCreation(){
             alert("Check the checkbox and/or enter correct account number")
             return
         }
-        axios.post(API_URL + "/api/users/register", {
+        axios.post(apiUrl("/api/users/register"), {
             login: (document.getElementById("acc") as HTMLInputElement).value
         })
-        .then((res) =>{
+        .then(() =>{
             localStorage.setItem("acc_num", (document.getElementById("acc") as HTMLInputElement).value)
             router.push('/dashboard')
         })

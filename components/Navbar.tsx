@@ -8,7 +8,7 @@ export default function Navbar(){
         <div className="flex justify-around pr-2 pl-2 absolute bg-[#DAFF62] w-90 h-10 bottom-10 right-50 rounded-[6]">
             <p onClick={() => router.push('/pricing')} className="text-[#508B0D] mt-auto mb-auto text-sm underline cursor-pointer">Pricing</p>
             <p onClick={() => router.push('/contact')} className="text-[#508B0D] mt-auto mb-auto text-sm underline cursor-pointer">Contact</p>
-            <p onClick={() => router.push('/about')} className="text-[#508B0D] mt-auto mb-auto text-sm underline cursor-pointer">Can you spot AI?</p>
+            <p className="text-[#508B0D] mt-auto mb-auto text-sm underline opacity-70">Can you spot AI?</p>
             <p onClick={() => router.push('/login')} className="text-[#508B0D] mt-auto mb-auto text-sm underline cursor-pointer">Login</p>
         </div>
     )
