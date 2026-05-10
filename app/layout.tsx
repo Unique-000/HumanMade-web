@@ -41,7 +41,7 @@ export default function RootLayout({
               centerX={0}
               centerY={0}
               zoom={0.9}
-              className="blur-3xl opacity-60 "
+              className="blur-3xl opacity-50 "
             />
           </div>
 

@@ -9,7 +9,7 @@ export default function Home() {
       <InputForm/>
 
       <div className="w-full  justify-center sm:flex hidden">
-        <h1 className="font-sans font-extrabold text-[90px] text-[#508B0D] ">Check the reality<br/>In front of your<br/>Eyes.</h1>
+        <h1 className="font-sans font-extrabold text-[90px] text-[#508B0D] ">Verify the reality<br/>In front of your<br/>Eyes.</h1>
       </div>
 
       <Navbar />

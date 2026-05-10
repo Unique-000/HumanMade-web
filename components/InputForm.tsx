@@ -21,7 +21,8 @@ export default function InputForm(){
         if (value.length == 6){
             setLoading(true)
             axios.get(apiUrl(`/api/images/${encodeURIComponent(value)}`))
-            .then(function (){
+            .then(function (res){
+                sessionStorage.setItem(`photo:${value}`, JSON.stringify(res.data))
                 localStorage.setItem("similar", "false")
                 router.push('/photo/'+value);
                 setLoading(false)
@@ -46,10 +47,12 @@ export default function InputForm(){
                     alert("No matches")
                 }
                 if(res.data.exactMatch == true){
+                    sessionStorage.setItem(`photo:${res.data.matches[0].code}`, JSON.stringify(res.data.matches[0]))
                     localStorage.setItem("similar", "false")
                     router.push('/photo/'+res.data.matches[0].code);
                 }
                 if (res.data.similarMatch == true){
+                    sessionStorage.setItem(`photo:${res.data.matches[0].code}`, JSON.stringify(res.data.matches[0]))
                     localStorage.setItem("similar", "true")
                     router.push('/photo/'+res.data.matches[0].code);
                 }
@@ -61,7 +64,7 @@ export default function InputForm(){
     }
 
     return(
-        <div className="w-fit sm:w-[400px] bg-background/50 backdrop-blur-[250px] p-7 space-y-7 rounded-[30] squircle text-[#709200] font-sans font-bold text-sm flex flex-col items-center">
+        <div className="w-fit sm:w-[400px] bg-[#95e539]/60 backdrop-blur-[250px] p-7 space-y-7 rounded-[30] squircle text-[#709200] font-sans font-bold text-sm flex flex-col items-center">
         <div className="flex flex-col space-y-2">
             <p className="font-bold">Code</p>
             <InputOTP maxLength={6} pattern={REGEXP_ONLY_DIGITS_AND_CHARS} value={code} onChange={(value) => {

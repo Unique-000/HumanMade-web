@@ -1,4 +1,5 @@
 "use client"
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 const AppleDownloadIcon = () => {
@@ -16,6 +17,18 @@ const AppleDownloadIcon = () => {
 
 export default function Navbar(){
     const router = useRouter()
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+    useEffect(() => {
+        const syncAuth = () => {
+            setIsLoggedIn(Boolean(localStorage.getItem("acc_num")))
+        }
+
+        syncAuth()
+        window.addEventListener("storage", syncAuth)
+
+        return () => window.removeEventListener("storage", syncAuth)
+    }, [])
 
     return(
         <nav className='w-full flex items-center justify-end flex-row h-10 absolute bottom-5 left-0 gap-x-5 pr-2 pl-2 sm:pl-0 sm:pr-5'>
@@ -23,7 +36,11 @@ export default function Navbar(){
                 <p onClick={() => router.push('/pricing')} className="text-[#508B0D] mt-auto mb-auto text-sm underline cursor-pointer">Pricing</p>
                 <p onClick={() => router.push('/contact')} className="text-[#508B0D] mt-auto mb-auto text-sm underline cursor-pointer">Contact</p>
                 <p className="text-[#508B0D] mt-auto mb-auto text-sm underline opacity-70">Can you spot AI?</p>
-                <p onClick={() => router.push('/login')} className="text-[#508B0D] mt-auto mb-auto text-sm underline cursor-pointer">Login</p>
+                {isLoggedIn ? (
+                    <p onClick={() => router.push('/dashboard')} className="text-[#508B0D] mt-auto mb-auto text-sm underline opacity-70 cursor-pointer">Devices</p>
+                ) : (
+                    <p onClick={() => router.push('/login')} className="text-[#508B0D] mt-auto mb-auto text-sm underline cursor-pointer">Login</p>
+                )}
             </div>
             <div className="w-fit h-fit sm:block hidden">
                 <AppleDownloadIcon/>

@@ -10,14 +10,15 @@ export default function Page(){
     const [menu, setMenu] = useState("devices")
 
     useEffect(() => {
-        if (localStorage.getItem("acc_num") == undefined || localStorage.getItem("acc_num") == ""){
-            router.push('/');
+        const accNum = localStorage.getItem("acc_num");
+        if (!accNum) {
+            router.replace('/');
         }
-    })
+    }, [router])
 
     function Logout() {
         localStorage.setItem("acc_num", "");
-        router.push('/');
+        router.replace('/');
     }
 
     return(
